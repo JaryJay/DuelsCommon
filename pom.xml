@@ -1,0 +1,20 @@
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>basementbois</groupId>
+	<artifactId>duelsCommon</artifactId>
+	<version>1</version>
+
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>basementbois</groupId>
+			<artifactId>GameEngine</artifactId>
+			<version>1</version>
+		</dependency>
+	</dependencies>
+
+</project>
