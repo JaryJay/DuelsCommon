@@ -1,7 +1,7 @@
 <project>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>basementbois</groupId>
-	<artifactId>duelsCommon</artifactId>
+	<artifactId>duels-common</artifactId>
 	<version>1</version>
 
 	<properties>
@@ -12,7 +12,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>basementbois</groupId>
-			<artifactId>GameEngine</artifactId>
+			<artifactId>game-engine</artifactId>
 			<version>1</version>
 		</dependency>
 	</dependencies>
