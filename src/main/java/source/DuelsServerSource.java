@@ -15,4 +15,9 @@ public class DuelsServerSource implements GameSource {
 		return "";
 	}
 
+	@Override
+	public long getId() {
+		return 0;
+	}
+
 }

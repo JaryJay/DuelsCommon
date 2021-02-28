@@ -11,6 +11,7 @@ public class DuelsClientSource implements GameSource {
 		this.id = id;
 	}
 
+	@Override
 	public long getId() {
 		return id;
 	}
