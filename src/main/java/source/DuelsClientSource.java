@@ -5,16 +5,19 @@ import common.source.GameSource;
 public class DuelsClientSource implements GameSource {
 
 	private static final long serialVersionUID = -482372584226448557L;
-	private String description;
+	private long id;
 
-	public DuelsClientSource(String description) {
-		super();
-		this.description = description;
+	public DuelsClientSource(long id) {
+		this.id = id;
+	}
+
+	public long getId() {
+		return id;
 	}
 
 	@Override
 	public String getDescription() {
-		return description;
+		return "Client Source";
 	}
 
 }
