@@ -1,25 +1,29 @@
 package state;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import entity.Player;
 import entity.Projectile;
+import input.InputFrame;
 
-public class GameState {
+public class GameState implements Serializable {
 
-	private long time;
+	private static final long serialVersionUID = 6943302012918667799L;
+
+	private long frame;
 
 	private List<Player> players;
 	private List<Projectile> projectiles;
 
-	public GameState(long time) {
-		this.time = time;
+	public GameState(long frame) {
+		this.frame = frame;
 		init();
 	}
 
 	public long getTime() {
-		return time;
+		return frame;
 	}
 
 	public void init() {
@@ -35,7 +39,7 @@ public class GameState {
 		return projectiles;
 	}
 
-	public GameState getNextState(float dt) {
+	public GameState getNextState(InputFrame inputFrame) {
 		return null;
 	}
 
