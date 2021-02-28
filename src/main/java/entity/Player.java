@@ -14,6 +14,7 @@ public class Player extends AbstractEntity implements Displayable {
 	private Vector2f direction;
 
 	private int health;
+	private String name;
 
 	public Player(long id) {
 		super(id);
@@ -33,6 +34,14 @@ public class Player extends AbstractEntity implements Displayable {
 
 	public void setHealth(int health) {
 		this.health = health;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Override

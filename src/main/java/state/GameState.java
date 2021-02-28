@@ -10,7 +10,7 @@ import input.InputFrame;
 
 public class GameState implements Serializable {
 
-	private static final long serialVersionUID = 6943302012918667799L;
+	private static final long serialVersionUID = -7082784099582626482L;
 
 	private long frame;
 

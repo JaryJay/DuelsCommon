@@ -16,6 +16,8 @@ public class PlayerDisplayer extends AbstractDisplayer<Player> {
 //		Vector2f direction = displayable.getDirection();
 		renderer.fill(150, 150, 150);
 		renderer.drawEllipse(position.x, position.y, Player.HITBOX_RADIUS, Player.HITBOX_RADIUS);
+		renderer.outlineColour(0, 0, 0);
+//		renderer.text(displayable., x, y);
 	}
 
 }
