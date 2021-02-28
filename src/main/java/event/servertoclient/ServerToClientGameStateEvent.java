@@ -9,21 +9,15 @@ import state.GameState;
 
 public class ServerToClientGameStateEvent extends GameEvent {
 
-	private static final long serialVersionUID = -1637570572582872053L;
+	private static final long serialVersionUID = -8361747575746913815L;
 
-	private long frame;
 	private GameState state;
 	private List<InputFrame> inputFrames;
 
-	public ServerToClientGameStateEvent(GameState state, List<InputFrame> inputFrames, long frame, long time) {
-		super(time, new DuelsServerSource());
+	public ServerToClientGameStateEvent(GameState state, List<InputFrame> inputFrames) {
+		super(new DuelsServerSource());
 		this.state = state;
 		this.inputFrames = inputFrames;
-		this.frame = frame;
-	}
-
-	public long getFrame() {
-		return frame;
 	}
 
 	public GameState getState() {
