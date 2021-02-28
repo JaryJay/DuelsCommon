@@ -14,8 +14,8 @@ public class GameState implements Serializable {
 
 	private long frame;
 
-	private List<Player> players;
-	private List<Projectile> projectiles;
+	private List<Player> players = new ArrayList<>();
+	private List<Projectile> projectiles = new ArrayList<>();
 
 	public GameState(long frame) {
 		this.frame = frame;
@@ -40,7 +40,28 @@ public class GameState implements Serializable {
 	}
 
 	public GameState getNextState(InputFrame inputFrame) {
-		return null;
+		GameState nextState = new GameState(frame + 1);
+		for (Player player : players) {
+			nextState.players.add(player);
+		}
+		for (Projectile projectile : projectiles) {
+			nextState.projectiles.add(projectile);
+		}
+		return nextState;
+	}
+
+	public void addPlayer(long id) {
+		players.add(new Player(id));
+	}
+
+	public void removePlayer(long id) {
+		List<Player> newPlayers = new ArrayList<>();
+		for (Player player : players) {
+			if (player.getId() != id) {
+				newPlayers.add(player);
+			}
+		}
+		players = newPlayers;
 	}
 
 }
