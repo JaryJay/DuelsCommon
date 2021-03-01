@@ -1,12 +1,15 @@
 package entity;
 
+import java.io.Serializable;
+
 import bundle.visuals.display.AbstractDisplayer;
 import bundle.visuals.display.Displayable;
 import common.coordinates.Vector2f;
 import common.entity.AbstractEntity;
 
-public class Player extends AbstractEntity implements Displayable {
+public class Player extends AbstractEntity implements Displayable, Serializable {
 
+	private static final long serialVersionUID = -7198533373314699581L;
 	public static final int MAX_HEALTH = 100;
 	public static final int HITBOX_RADIUS = 10;
 
