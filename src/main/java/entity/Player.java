@@ -13,8 +13,8 @@ public class Player extends AbstractEntity implements Displayable, Serializable 
 	public static final int MAX_HEALTH = 100;
 	public static final int HITBOX_RADIUS = 10;
 
-	private Vector2f position;
-	private Vector2f direction;
+	private Vector2f position = new Vector2f(0, 0);
+	private Vector2f direction = new Vector2f(0, 0);
 
 	private int health;
 	private String name;
