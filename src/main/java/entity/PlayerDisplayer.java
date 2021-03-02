@@ -17,7 +17,7 @@ public class PlayerDisplayer extends AbstractDisplayer<Player> {
 		renderer.fill(150, 150, 150);
 		renderer.drawEllipse(position.x, position.y, Player.HITBOX_RADIUS, Player.HITBOX_RADIUS);
 		renderer.outlineColour(0, 0, 0);
-//		renderer.text(displayable., x, y);
+//		renderer.text(displayable.getName(), position.x, position.y - 20);
 	}
 
 }
