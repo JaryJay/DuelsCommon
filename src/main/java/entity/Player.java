@@ -15,12 +15,13 @@ import input.InputFrame;
 public class Player extends IntegrableEntity implements Displayable, Serializable {
 
 	private static final long serialVersionUID = -7052939609205262533L;
+	private static final float SQUARE_ROOT_TWO_OVER_TWO = 0.707106781187F;
 	public static final int MAX_HEALTH = 100;
 	public static final int HITBOX_RADIUS = 10;
 
 	private Vector2f position = new Vector2f(0, 0);
 	private Vector2f direction = new Vector2f(0, 0);
-	private float speed;
+	private float speed = 1;
 	private int health;
 	private String name;
 
@@ -37,50 +38,59 @@ public class Player extends IntegrableEntity implements Displayable, Serializabl
 		iDirection.set(direction);
 
 		for (AbstractGameInputEvent event : inputFrame.inputs) {
-			GameSource source = event.getSource();
-			if (source.getId() == getId()) {
-				if (event instanceof KeyPressedInputEvent) {
-					switch (((KeyPressedInputEvent) event).getKeyCode()) {
-						case KeyEvent.VK_W:
-							iDirection.y = Math.max(-1, iDirection.y - 1);
-							break;
-						case KeyEvent.VK_A:
-							iDirection.x = Math.max(-1, iDirection.x - 1);
-							break;
-						case KeyEvent.VK_S:
+			integrateInput(iDirection, event);
+		}
 
-							iDirection.y = Math.min(1, iDirection.y + 1);
-							break;
-						case KeyEvent.VK_D:
-							iDirection.x = Math.min(1, iDirection.x + 1);
-							break;
-						default:
-							break;
-					}
+		if (Math.abs(direction.x) + Math.abs(direction.y) == 2) {
+			integratedPlayer.getPosition().add(direction.copy().scale(SQUARE_ROOT_TWO_OVER_TWO));
+		} else {
+			integratedPlayer.getPosition().add(direction);
+		}
+		return integratedPlayer;
+	}
+
+	private void integrateInput(Vector2f iDirection, AbstractGameInputEvent event) {
+		GameSource source = event.getSource();
+		if (source.getId() == getId()) {
+			if (event instanceof KeyPressedInputEvent) {
+				switch (((KeyPressedInputEvent) event).getKeyCode()) {
+					case KeyEvent.VK_W:
+						iDirection.y = Math.max(-1, iDirection.y - 1);
+						break;
+					case KeyEvent.VK_A:
+						iDirection.x = Math.max(-1, iDirection.x - 1);
+						break;
+					case KeyEvent.VK_S:
+
+						iDirection.y = Math.min(1, iDirection.y + 1);
+						break;
+					case KeyEvent.VK_D:
+						iDirection.x = Math.min(1, iDirection.x + 1);
+						break;
+					default:
+						break;
 				}
-				if (event instanceof KeyReleasedInputEvent) {
-					switch (((KeyReleasedInputEvent) event).getKeyCode()) {
-						case KeyEvent.VK_W:
-							iDirection.y = Math.min(1, iDirection.y + 1);
-							break;
-						case KeyEvent.VK_A:
-							iDirection.x = Math.min(1, iDirection.x + 1);
-							break;
-						case KeyEvent.VK_S:
+			}
+			if (event instanceof KeyReleasedInputEvent) {
+				switch (((KeyReleasedInputEvent) event).getKeyCode()) {
+					case KeyEvent.VK_W:
+						iDirection.y = Math.min(1, iDirection.y + 1);
+						break;
+					case KeyEvent.VK_A:
+						iDirection.x = Math.min(1, iDirection.x + 1);
+						break;
+					case KeyEvent.VK_S:
 
-							iDirection.y = Math.max(-1, iDirection.y - 1);
-							break;
-						case KeyEvent.VK_D:
-							iDirection.x = Math.max(-1, iDirection.x - 1);
-							break;
-						default:
-							break;
-					}
+						iDirection.y = Math.max(-1, iDirection.y - 1);
+						break;
+					case KeyEvent.VK_D:
+						iDirection.x = Math.max(-1, iDirection.x - 1);
+						break;
+					default:
+						break;
 				}
 			}
 		}
-		integratedPlayer.getPosition().add(direction);
-		return integratedPlayer;
 	}
 
 	@Override

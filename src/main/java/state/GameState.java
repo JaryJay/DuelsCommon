@@ -41,13 +41,26 @@ public class GameState implements Serializable {
 
 	public GameState getNextState(InputFrame inputFrame) {
 		GameState nextState = new GameState(frame + 1);
+		List<Player> integratedPlayers = new ArrayList<>();
+		List<Projectile> integratedProjectiles = new ArrayList<>();
 		for (Player player : players) {
-			nextState.players.add(player);
+			integratedPlayers.add(player.integrate(inputFrame));
 		}
 		for (Projectile projectile : projectiles) {
-			nextState.projectiles.add(projectile);
+			integratedProjectiles.add(projectile.integrate(inputFrame));
 		}
+		nextState.players.addAll(integratedPlayers);
+		nextState.projectiles.addAll(integratedProjectiles);
 		return nextState;
+	}
+
+	public Player getPlayer(long id) {
+		for (Player player : players) {
+			if (player.getId() != id) {
+				return player;
+			}
+		}
+		return null;
 	}
 
 	public void addPlayer(long id) {

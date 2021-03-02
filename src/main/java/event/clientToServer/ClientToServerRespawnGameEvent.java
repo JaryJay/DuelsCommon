@@ -1,15 +1,15 @@
-package event;
+package event.clientToServer;
 
 import common.event.GameEvent;
 import common.source.GameSource;
 import entity.Player;
 
-public class RespawnGameEvent extends GameEvent {
+public class ClientToServerRespawnGameEvent extends GameEvent {
 
 	private static final long serialVersionUID = 1020077947876155559L;
 	private Player player;
 
-	public RespawnGameEvent(long time, GameSource source) {
+	public ClientToServerRespawnGameEvent(long time, GameSource source) {
 		super(time, source);
 	}
 

@@ -19,4 +19,13 @@ public class ProjectileDisplayer extends AbstractDisplayer<Projectile> {
 		renderer.drawEllipse(position.x, position.y, radius, radius);
 	}
 
+	@Override
+	public void display(Projectile displayable, float alpha) {
+		Vector2f position = displayable.getPosition();
+		Vector2f direction = displayable.getDirection();
+		renderer.fill(150, 150, 150);
+		renderer.drawEllipse(position.x + direction.x * alpha, position.y + direction.y * alpha, Player.HITBOX_RADIUS, Player.HITBOX_RADIUS);
+		renderer.outlineColour(0, 0, 0);
+	}
+
 }
